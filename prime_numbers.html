@@ -2,7 +2,12 @@
   let primes = [2];
 
   function isPrime(n) {
-    for (let i = 2; i < n; i++) {
+    for (let i = 0; i < primes.length; i++) {
+      if (n % primes[i] === 0) return false;
+    }
+
+    let lastCalculatedPrime = primes[primes.length - 1];
+    for (let i = lastCalculatedPrime; i < n; i++) {
       if (n % i === 0) return false;
     }
 
@@ -15,7 +20,7 @@
     // Already have cached results
     if (lastCalculatedPrime > max) {
       let end = primes.findIndex((i) => i > max);
-      console.log('return fully cached result for ' + max);
+      console.log('return fully cached result for max === ' + max);
       return primes.slice(0, end);
     }
 
@@ -33,4 +38,5 @@
   console.log(findPrimes(12));
   console.log(findPrimes(120));
   console.log(findPrimes(300));
+  console.log(findPrimes(5000));
 </script>
