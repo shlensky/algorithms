@@ -1,16 +1,26 @@
 <script>
-    function isPrime(n) {
-      for (let i = 2; i < n; i++) {
-        if (n % i === 0) return false;
-      }
+  let primes = [2];
 
-      return true;
+  function isPrime(n) {
+    for (let i = 2; i < n; i++) {
+      if (n % i === 0) return false;
     }
 
-  function findPrimes(limit) {
-    let primes = [];
+    return true;
+  }
 
-    for (let i = 2; i <= limit; ++i) {
+  function findPrimes(max) {
+    let lastCalculatedPrime = primes[primes.length - 1];
+
+    // Already have cached results
+    if (lastCalculatedPrime > max) {
+      let end = primes.findIndex((i) => i > max);
+      console.log('return fully cached result for ' + max);
+      return primes.slice(0, end);
+    }
+
+    console.log('start calculating primes starting from ' + lastCalculatedPrime);
+    for (let i = lastCalculatedPrime; i <= max; ++i) {
       if (isPrime(i)) {
         primes.push(i);
       }
@@ -19,6 +29,8 @@
     return primes;
   }
 
-  console.log(findPrimes(12));
   console.log(findPrimes(200));
+  console.log(findPrimes(12));
+  console.log(findPrimes(120));
+  console.log(findPrimes(300));
 </script>
