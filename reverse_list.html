@@ -1,0 +1,21 @@
+<script>
+  function reverseList(node) {
+    let stack = [];
+
+    let current = node;
+    while (current.next) {
+      stack.push(current);
+      current = current.next;
+    }
+    let end = current;
+
+    while (stack.length) {
+      current.next = stack.pop();
+      current = current.next;
+    }
+
+    return end;
+  }
+
+  console.log(reverseList({v: 1, next: {v: 2, next: {v: 3, next: {v: 4}}}}));
+</script>
