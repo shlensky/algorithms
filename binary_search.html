@@ -1,0 +1,25 @@
+<script>
+  function binarySearch(arr, value) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left !== right) {
+      let middle = Math.floor((left + right) / 2);
+
+      if (arr[middle] === value) {
+        return middle;
+      }
+
+      if (arr[middle] > value) {
+        right = middle;
+      } else {
+        left = middle;
+      }
+    }
+  }
+
+  console.log(binarySearch([1, 2, 3, 4, 5], 3));
+  console.log(binarySearch([1, 2, 3, 4, 5], 4));
+  console.log(binarySearch([1, 2, 3, 4, 5], 1));
+  console.log(binarySearch([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37], 5));
+</script>
