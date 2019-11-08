@@ -1,0 +1,38 @@
+<script>
+  const braceMap = {
+    '{': '}',
+    '<': '>',
+    '[': ']',
+    '(': ')',
+  };
+
+  function checkBraces(str) {
+    let stack = [];
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i];
+
+      // opening brace
+      if (braceMap[char]) {
+        stack.push(char);
+      }
+
+      // closing brace
+      else {
+        let opening = stack.pop();
+        if (braceMap[opening] !== char) {
+          return false;
+        }
+      }
+    }
+
+    return stack.length === 0;
+  }
+
+  console.log(checkBraces("(<[]>)"));
+  console.log(checkBraces("((()))"));
+  console.log(checkBraces("[<({})>]"));
+
+  console.log(checkBraces("(()))"));
+  console.log(checkBraces(")()"));
+  console.log(checkBraces("[[[["));
+</script>
