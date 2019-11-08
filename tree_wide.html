@@ -1,0 +1,29 @@
+<script>
+  const tree = {
+    v: 1,
+    l: {
+      v: 2,
+      l: {v: 3},
+      r: {v: 4},
+    },
+    r: {
+      v: 5,
+      l: {v: 6},
+      r: {v: 7}
+    }
+  };
+
+  function traverse(node) {
+    let queue = [node];
+
+    while (queue.length) {
+      let currentNode = queue.shift();
+      console.log(currentNode.v);
+
+      if (currentNode.l) queue.push(currentNode.l);
+      if (currentNode.r) queue.push(currentNode.r);
+    }
+  }
+
+  traverse(tree);
+</script>
