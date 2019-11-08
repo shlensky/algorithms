@@ -1,0 +1,24 @@
+<script>
+  const tree = {
+    v: 1,
+    l: {
+      v: 2,
+      l: {v: 3},
+      r: {v: 4},
+    },
+    r: {
+      v: 5,
+      l: {v: 6},
+      r: {v: 7}
+    }
+  };
+
+  function traverse(node) {
+    console.log(node.v);
+
+    if (node.l) traverse(node.l);
+    if (node.r) traverse(node.r);
+  }
+
+  traverse(tree);
+</script>
