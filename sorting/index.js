@@ -2,6 +2,7 @@ const bubbleSort = require('./bubble_sort');
 const selectionSort = require('./selection_sort');
 const insertionSort = require('./insertion_sort');
 const mergeSort = require('./merge_sort');
+const quickSort = require('./quick_sort');
 const defaultSort = function(arr) {
 	arr.sort((a, b) => a - b);
 }
@@ -33,13 +34,13 @@ function assertArraysEqual(array1, array2, message) {
 	}
 }
 
-const algorithms = [bubbleSort, selectionSort, insertionSort, mergeSort, defaultSort];
+const algorithms = [bubbleSort, selectionSort, insertionSort, mergeSort, quickSort, defaultSort];
 for (const algorithm of algorithms) {
 	console.time(algorithm.name);
 	for (const sample of samples) {
 		const copy = sample[0].slice(0);
 		const expected = sample[1];
-		
+
 		bubbleSort(copy);
 		assertArraysEqual(copy, expected, 'Arrays is not equal! Algorithm: ' + bubbleSort.name);
 	}
